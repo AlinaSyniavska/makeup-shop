@@ -1,4 +1,5 @@
 const {Schema, model} = require('mongoose');
+const {priceSignEnum} = require("../constants");
 
 const ProductSchema = new Schema({
     brand: {
@@ -19,6 +20,7 @@ const ProductSchema = new Schema({
     priceSign: {
         type: String,
         trim: true,
+        enum: Object.values(priceSignEnum),
         required: true,
     },
     imageLink: {

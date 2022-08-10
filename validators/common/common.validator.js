@@ -8,5 +8,5 @@ module.exports = {
     passwordValidator: Joi.string().regex(regexEnum.PASSWORD),
     phoneValidator: Joi.string().regex(regexEnum.PHONE).trim(),
 
-    commonDataValidator: Joi.string().max(20).trim(true),
+    commonDataValidator: Joi.string().max(100).trim(true),
 }
