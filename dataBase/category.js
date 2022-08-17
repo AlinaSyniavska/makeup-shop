@@ -1,11 +1,6 @@
 const {Schema, model} = require('mongoose');
 
 const CategorySchema = new Schema({
-    productTypeId: {
-        type: Schema.Types.ObjectId,
-        ref: 'productType',
-        // required: true,
-    },
     name: {
         type: String,
         trim: true,

@@ -3,4 +3,5 @@ module.exports = {
     regexEnum: require('./regex.enum'),
     priceSignEnum: require('./priceSign.enum'),
     tagEnum: require('./tag.enum'),
+    cartStatus: require('./carStatus.enum'),
 }
