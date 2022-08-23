@@ -1,7 +1,7 @@
 const adminRouter = require('express').Router();
 
 const {Brand, Category, ProductType, Product} = require("../../dataBase");
-const {adminController, adminProductController} = require("../../controllers");
+const {adminController, productController} = require("../../controllers");
 const {adminCommonMiddleware, commonMiddleware} = require("../../middlewares");
 const {adminCommonValidator, productQueryValidator, adminProductValidator} = require("../../validators");
 
@@ -74,23 +74,23 @@ adminRouter.delete('/productType/:id',
 // /product
 adminRouter.get('/product',
     adminCommonMiddleware.isItemValid(productQueryValidator.allProductsValidator, 'query'),
-    adminProductController.getAllProducts);
+    productController.getAllProducts);
 adminRouter.post('/product',
     adminCommonMiddleware.isItemValid(adminProductValidator.newProductValidator),
     adminCommonMiddleware.isItemUniq(Product),
-    adminProductController.createProduct);
+    productController.createProduct);
 adminRouter.get('/product/:id',
     commonMiddleware.isIdValid,
     adminCommonMiddleware.isItemPresent(Product),
-    adminProductController.getProductById);
+    productController.getProductById);
 adminRouter.put('/product/:id',
     commonMiddleware.isIdValid,
     adminCommonMiddleware.isItemValid(adminProductValidator.updateProductValidator),
     adminCommonMiddleware.isItemPresent(Product),
-    adminProductController.updateProduct);
+    productController.updateProduct);
 adminRouter.delete('/product/:id',
     commonMiddleware.isIdValid,
     adminCommonMiddleware.isItemPresent(Product),
-    adminProductController.deleteProduct);
+    productController.deleteProduct);
 
 module.exports = adminRouter;

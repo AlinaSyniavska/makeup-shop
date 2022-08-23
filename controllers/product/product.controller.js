@@ -1,9 +1,9 @@
-const {adminProductService} = require("../../services");
+const {productService} = require("../../services");
 
 module.exports = {
     getAllProducts: async (req, res, next) => {
         try {
-            const paginationResponse = await adminProductService.findAllWithPagination(req.query);
+            const paginationResponse = await productService.findAllWithPagination(req.query);
 
             const {page, perPage, data, count} = paginationResponse;
 

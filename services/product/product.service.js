@@ -1,4 +1,5 @@
 const {Product} = require("../../dataBase");
+const {ratingEnum} = require("../../constants");
 
 module.exports = {
     findAll: (params = {}) => {
@@ -6,14 +7,21 @@ module.exports = {
     },
 
     findAllWithPagination: async (query = {}) => {
-        const {page = 1, perPage = 10, ...otherFilters} = query;
+        const {page = 1, perPage = 10, sortOrder, ...otherFilters} = query;
         const skip = (page - 1) * perPage;
+        let products;
 
-        console.log(otherFilters);  // search, ageGte, ageLte, ...
+        console.log(otherFilters);  // search, top, ...
 
         const queryFilters = _getUserFilterQuery(otherFilters);
 
-        const products = await Product.find(queryFilters).skip(skip).limit(perPage);
+        if (sortOrder === ratingEnum.HIGH) {
+            products = await Product.find(queryFilters).sort({rating:-1}).skip(skip).limit(perPage);
+        } else if (sortOrder === ratingEnum.LOW) {
+            products = await Product.find(queryFilters).sort({rating:1}).skip(skip).limit(perPage)
+        } else {
+            products = await Product.find(queryFilters).skip(skip).limit(perPage);
+        }
         const productsCount = await Product.countDocuments(queryFilters);
 
         return {
@@ -44,11 +52,18 @@ module.exports = {
 function _getUserFilterQuery(filters) {
     const searchObject = {};    // prepared mongo queries
 
+    if (filters.sortOrder) {
+        /* Object.assign(searchObject, {
+             rating: {$eq: filters.sortOrder}
+         })*/
+    }
+
+
     if (filters.search) {
         Object.assign(searchObject, {
             $or: [
-                { name: { $regex: filters.search, $options: 'i' }},
-                { email: { $regex: filters.search, $options: 'i' }}
+                {name: {$regex: filters.search, $options: 'i'}},
+                {email: {$regex: filters.search, $options: 'i'}}
             ]
         })
     }
