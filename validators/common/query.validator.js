@@ -12,11 +12,6 @@ module.exports = {
         page: Joi.number().integer().min(1),
         perPage: Joi.number().integer().min(1).max(50),
         sortOrder: Joi.number().valid(...Object.values(ratingEnum)),
-
-
-
-        // search: Joi.string().alphanum().trim(true),
-        // ageGte: Joi.number().integer().min(1).max(120),
-        // ageLte: Joi.number().integer().min(1).max(120),
+        filterBy: Joi.string().trim().allow(''),
     }),
 };

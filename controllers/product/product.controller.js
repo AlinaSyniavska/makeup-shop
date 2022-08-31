@@ -1,4 +1,5 @@
 const {productService} = require("../../services");
+const {productHelper} = require("../../helpers");
 
 module.exports = {
     getAllProducts: async (req, res, next) => {
@@ -18,14 +19,34 @@ module.exports = {
         }
     },
 
+    getAllProductsByCategory: async (req, res, next) => {
+        try {
+            const [productType, category] = productHelper.getTypeAndCategory(req.path);
+
+            const paginationResponse = await productService.findAllByCategory(productType, category, req.query);
+
+            const {page, perPage, data, count} = paginationResponse;
+
+            res.json({
+                page,
+                perPage,
+                data,
+                count,
+            });
+        } catch (e) {
+            next(e);
+        }
+    },
+
     createProduct: async (req, res, next) => {
         try {
-            const newProduct = await adminProductService.createOne({...req.body});
+            const newProduct = await productService.createOne({...req.body});
             res.status(201).json(newProduct);
         } catch (e) {
             next(e);
         }
     },
+
     getProductById: async (req, res, next) => {
         try {
             const {item} = req;
@@ -38,7 +59,7 @@ module.exports = {
     updateProduct: async (req, res, next) => {
         try {
             const {id} = req.params;
-            const updatedProduct = await adminProductService.updateOne({_id: id}, req.body);
+            const updatedProduct = await productService.updateOne({_id: id}, req.body);
             res.status(201).json(updatedProduct);
         } catch (e) {
             next(e);
@@ -48,7 +69,7 @@ module.exports = {
     deleteProduct: async (req, res, next) => {
         try {
             const {id} = req.params;
-            await adminProductService.deleteOne({_id: id});
+            await productService.deleteOne({_id: id});
             res.sendStatus(204);
         } catch (e) {
             next(e);
