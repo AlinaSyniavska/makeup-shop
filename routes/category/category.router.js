@@ -2,7 +2,7 @@ const categoryRouter = require('express').Router();
 
 const {commonMiddleware} = require("../../middlewares");
 const {productController} = require("../../controllers");
-const {productQueryValidator} = require("../../validators");
+const {queryValidator} = require("../../validators");
 /*
 - /category/cream/face
 - /category/cream/body
@@ -17,34 +17,34 @@ const {productQueryValidator} = require("../../validators");
 */
 
 categoryRouter.get('/cream/face',
-    commonMiddleware.isDataValid(productQueryValidator.allProductsValidator, 'query'),
+    commonMiddleware.isDataValid(queryValidator.allProductsValidator, 'query'),
     productController.getAllProductsByCategory);
 categoryRouter.get('/cream/body',
-    commonMiddleware.isDataValid(productQueryValidator.allProductsValidator, 'query'),
+    commonMiddleware.isDataValid(queryValidator.allProductsValidator, 'query'),
     productController.getAllProductsByCategory);
 categoryRouter.get('/eyebrow',
-    commonMiddleware.isDataValid(productQueryValidator.allProductsValidator, 'query'),
+    commonMiddleware.isDataValid(queryValidator.allProductsValidator, 'query'),
     productController.getAllProductsByCategory);
 categoryRouter.get('/eyeshadow/palette',
-    commonMiddleware.isDataValid(productQueryValidator.allProductsValidator, 'query'),
+    commonMiddleware.isDataValid(queryValidator.allProductsValidator, 'query'),
     productController.getAllProductsByCategory);
 categoryRouter.get('/eyeshadow/pencil',
-    commonMiddleware.isDataValid(productQueryValidator.allProductsValidator, 'query'),
+    commonMiddleware.isDataValid(queryValidator.allProductsValidator, 'query'),
     productController.getAllProductsByCategory);
 categoryRouter.get('/eyeshadow/cream',
-    commonMiddleware.isDataValid(productQueryValidator.allProductsValidator, 'query'),
+    commonMiddleware.isDataValid(queryValidator.allProductsValidator, 'query'),
     productController.getAllProductsByCategory);
 categoryRouter.get('/lipstick/lipstick',
-    commonMiddleware.isDataValid(productQueryValidator.allProductsValidator, 'query'),
+    commonMiddleware.isDataValid(queryValidator.allProductsValidator, 'query'),
     productController.getAllProductsByCategory);
 categoryRouter.get('/lipstick/lipgloss',
-    commonMiddleware.isDataValid(productQueryValidator.allProductsValidator, 'query'),
+    commonMiddleware.isDataValid(queryValidator.allProductsValidator, 'query'),
     productController.getAllProductsByCategory);
 categoryRouter.get('/mascara',
-    commonMiddleware.isDataValid(productQueryValidator.allProductsValidator, 'query'),
+    commonMiddleware.isDataValid(queryValidator.allProductsValidator, 'query'),
     productController.getAllProductsByCategory);
 categoryRouter.get('/powder',
-    commonMiddleware.isDataValid(productQueryValidator.allProductsValidator, 'query'),
+    commonMiddleware.isDataValid(queryValidator.allProductsValidator, 'query'),
     productController.getAllProductsByCategory);
 
 module.exports = categoryRouter;

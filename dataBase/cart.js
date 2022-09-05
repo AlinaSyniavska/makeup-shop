@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose');
 
-const {cartStatus} = require("../constants");
+const {cartStatusEnum} = require("../constants");
 
 
 const productOrdered = {
@@ -28,8 +28,8 @@ const CartSchema = new Schema({
     status: {
         type: String,
         required: true,
-        default: cartStatus.IN_PROGRESS,
-        enum: Object.values(cartStatus)
+        default: cartStatusEnum.IN_PROGRESS,
+        enum: Object.values(cartStatusEnum)
     },
     sum: {
         type: Number,

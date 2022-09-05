@@ -40,9 +40,15 @@ module.exports = {
         const queryFilters = _getUserFilterQuery(otherFilters);
 
         if (sortOrder === ratingEnum.HIGH) {
-            products = await Product.find({productType, category, ...queryFilters}).sort({rating: -1}).skip(skip).limit(perPage);
+            products = await Product.find({
+                productType,
+                category, ...queryFilters
+            }).sort({rating: -1}).skip(skip).limit(perPage);
         } else if (sortOrder === ratingEnum.LOW) {
-            products = await Product.find({productType, category, ...queryFilters}).sort({rating: 1}).skip(skip).limit(perPage)
+            products = await Product.find({
+                productType,
+                category, ...queryFilters
+            }).sort({rating: 1}).skip(skip).limit(perPage)
         } else {
             products = await Product.find({productType, category, ...queryFilters}).skip(skip).limit(perPage);
         }
@@ -82,6 +88,24 @@ function _getUserFilterQuery(filters) {
 
         Object.assign(searchObject, {
             tagList: {$in: tags}
+        })
+    }
+
+    if (filters.brand) {
+        Object.assign(searchObject, {
+            brand: {$regex: filters.brand, $options: 'i'}
+        })
+    }
+
+    if (filters.category) {
+        Object.assign(searchObject, {
+            category: {$regex: filters.category, $options: 'i'}
+        })
+    }
+
+    if (filters.productType) {
+        Object.assign(searchObject, {
+            productType: {$regex: filters.productType, $options: 'i'}
         })
     }
 

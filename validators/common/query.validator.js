@@ -1,6 +1,7 @@
 const Joi = require("joi");
 
 const {regexEnum, ratingEnum} = require("../../constants");
+const {emailValidator} = require("./common.validator");
 
 module.exports = {
     allProductsValidator: Joi.object({
@@ -13,5 +14,12 @@ module.exports = {
         perPage: Joi.number().integer().min(1).max(50),
         sortOrder: Joi.number().valid(...Object.values(ratingEnum)),
         filterBy: Joi.string().trim().allow(''),
+    }),
+
+    allUsersValidator: Joi.object({
+        name: Joi.string().regex(regexEnum.NAME_USER).trim(true).min(2).max(30),
+        surname: Joi.string().regex(regexEnum.NAME_USER).trim(true).min(2).max(30),
+        age: Joi.number().integer().min(1).max(120),
+        email: emailValidator,
     }),
 };

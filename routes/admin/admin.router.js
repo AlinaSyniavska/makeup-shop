@@ -3,7 +3,7 @@ const adminRouter = require('express').Router();
 const {Brand, Category, ProductType, Product} = require("../../dataBase");
 const {adminController, productController} = require("../../controllers");
 const {adminCommonMiddleware, commonMiddleware} = require("../../middlewares");
-const {adminCommonValidator, productQueryValidator, adminProductValidator} = require("../../validators");
+const {adminCommonValidator, queryValidator, adminProductValidator} = require("../../validators");
 
 // /brand
 adminRouter.get('/brand',
@@ -73,7 +73,7 @@ adminRouter.delete('/productType/:id',
 
 // /product
 adminRouter.get('/product',
-    adminCommonMiddleware.isItemValid(productQueryValidator.allProductsValidator, 'query'),
+    adminCommonMiddleware.isItemValid(queryValidator.allProductsValidator, 'query'),
     productController.getAllProducts);
 adminRouter.post('/product',
     adminCommonMiddleware.isItemValid(adminProductValidator.newProductValidator),

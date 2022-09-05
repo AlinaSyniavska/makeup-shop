@@ -5,9 +5,10 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
-// const swaggerJson = require('./swagger.json');
+const swaggerJson = require('./swagger.json');
 
-const {adminRouter, homeRouter, categoryRouter} = require("./routes");
+const {adminRouter, homeRouter, categoryRouter, authRouter} = require("./routes");
+const userRouter = require("./routes/user/user.router");
 
 mongoose.connect(config.MONGO_URL);
 
@@ -25,8 +26,10 @@ app.options('*', cors()) // include before other routes
 app.use(cors(_configureCors()));
 
 app.use('/admin', adminRouter);
-app.use('/home', homeRouter);
+app.use('/auth', authRouter);
 app.use('/category', categoryRouter);
+app.use('/home', homeRouter);
+app.use('/users', userRouter);
 
 // app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerJson));
 

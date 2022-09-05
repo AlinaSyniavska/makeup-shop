@@ -1,6 +1,8 @@
 module.exports = {
     adminCommonValidator: require('./admin/admin.common.validator'),
     adminProductValidator: require('./admin/admin.product.validator'),
+    authValidator: require('./auth/auth.validator'),
     commonValidator: require('./common/common.validator'),
-    productQueryValidator: require('./common/query.validator'),
+    queryValidator: require('./common/query.validator'),
+    userValidator: require('./user/user.validator'),
 }

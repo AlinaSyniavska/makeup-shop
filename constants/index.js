@@ -1,8 +1,10 @@
 module.exports = {
+    cartStatusEnum: require('./carStatus.enum'),
+    emailActionEnum: require('./email-action.enum'),
     genderEnum: require('./gender.enum'),
-    regexEnum: require('./regex.enum'),
-    ratingEnum: require('./rating.enum'),
     priceSignEnum: require('./priceSign.enum'),
+    ratingEnum: require('./rating.enum'),
+    regexEnum: require('./regex.enum'),
     tagEnum: require('./tag.enum'),
-    cartStatus: require('./carStatus.enum'),
+    tokenTypeEnum: require('./token-type.enum'),
 }
