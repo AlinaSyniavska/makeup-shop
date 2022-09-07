@@ -42,7 +42,7 @@ module.exports = {
 
       res.json(tokens);
     } catch (e) {
-      next(e);
+      return next(e);
     }
   },
 

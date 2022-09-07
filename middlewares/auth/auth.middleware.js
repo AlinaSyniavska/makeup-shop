@@ -44,6 +44,8 @@ module.exports = {
         try {
             const accessToken = req.get(config.AUTHORIZATION);
 
+            console.log(req.body)
+
             if (!accessToken) {
                 return next(new CustomError('No token', 401));
             }
