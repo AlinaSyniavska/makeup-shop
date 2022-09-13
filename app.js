@@ -6,6 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJson = require('./swagger.json');
+const cronRun = require('./cron');
 
 const {adminRouter, homeRouter, categoryRouter, authRouter, cartRouter, userRouter} = require("./routes");
 
@@ -46,6 +47,7 @@ app.use((err, req, res, next) => {
 
 app.listen(config.PORT, () => {
     console.log(`Started on port ${config.PORT}`);
+    cronRun();
 });
 
 function _configureCors() {
