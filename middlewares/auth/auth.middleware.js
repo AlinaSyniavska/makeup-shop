@@ -44,8 +44,6 @@ module.exports = {
         try {
             const accessToken = req.get(config.AUTHORIZATION);
 
-            console.log(req.body)
-
             if (!accessToken) {
                 return next(new CustomError('No token', 401));
             }
@@ -55,7 +53,6 @@ module.exports = {
             const tokenInfo = await OAuth.findOne({access_token: accessToken}).populate('userId');
 
             if (!tokenInfo) {
-                // return next(new CustomError('No token', 401));
                 return next(new CustomError('Token not valid', 401));
             }
 

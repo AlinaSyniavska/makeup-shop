@@ -3,6 +3,7 @@ const EmailTemplates = require('email-templates');
 const path = require('path');
 
 const {CustomError} = require("../../errors");
+const emailTemplates = require('../../email-templates');
 const {config} = require("../../configs");
 
 

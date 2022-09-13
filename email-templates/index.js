@@ -10,4 +10,9 @@ module.exports = {
         subject: 'Opps looks like you forgot password',
         template: 'forgot-password'
     },
+
+    [emailActionEnum.ORDER]: {
+        subject: 'Your order accepted',
+        template: 'order'
+    },
 };

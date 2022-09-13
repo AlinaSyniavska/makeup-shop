@@ -1,5 +1,5 @@
 module.exports = {
-    cartStatusEnum: require('./carStatus.enum'),
+    cartStatusEnum: require('./cartStatus.enum'),
     emailActionEnum: require('./email-action.enum'),
     genderEnum: require('./gender.enum'),
     priceSignEnum: require('./priceSign.enum'),

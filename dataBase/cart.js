@@ -2,7 +2,6 @@ const {Schema, model} = require('mongoose');
 
 const {cartStatusEnum} = require("../constants");
 
-
 const productOrdered = {
     productId: {
         type: Schema.Types.ObjectId,

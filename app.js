@@ -7,8 +7,7 @@ const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJson = require('./swagger.json');
 
-const {adminRouter, homeRouter, categoryRouter, authRouter} = require("./routes");
-const userRouter = require("./routes/user/user.router");
+const {adminRouter, homeRouter, categoryRouter, authRouter, cartRouter, userRouter} = require("./routes");
 
 mongoose.connect(config.MONGO_URL);
 
@@ -27,6 +26,7 @@ app.use(cors(_configureCors()));
 
 app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
+app.use('/cart', cartRouter);
 app.use('/category', categoryRouter);
 app.use('/home', homeRouter);
 app.use('/users', userRouter);
