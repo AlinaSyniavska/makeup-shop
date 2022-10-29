@@ -17,6 +17,7 @@ module.exports = {
   updateUserValidator: Joi.object({
     name: Joi.string().regex(regexEnum.NAME_USER).trim(true).min(2).max(30),
     surname: Joi.string().regex(regexEnum.NAME_USER).trim(true).min(2).max(30),
+    gender: Joi.string().valid(...Object.values(genderEnum)).trim(),
     age: Joi.number().integer().min(1).max(120),
     phone: phoneValidator,
   }),
