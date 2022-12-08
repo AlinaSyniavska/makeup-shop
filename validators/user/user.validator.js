@@ -12,6 +12,7 @@ module.exports = {
     age: Joi.number().integer().min(1).max(120),
     email: emailValidator.required(),
     password: passwordValidator.required(),
+    favoriteList: Joi.array().items(Joi.string()),
   }),
 
   updateUserValidator: Joi.object({
@@ -20,6 +21,7 @@ module.exports = {
     gender: Joi.string().valid(...Object.values(genderEnum)).trim(),
     age: Joi.number().integer().min(1).max(120),
     phone: phoneValidator,
+    favoriteList: Joi.array().items(Joi.string()),
   }),
 };
 

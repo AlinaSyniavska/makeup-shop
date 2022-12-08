@@ -2,6 +2,14 @@ const {Schema, model} = require('mongoose');
 
 const {genderEnum} = require("../constants");
 
+const favorite = {
+    productId: {
+        type: Schema.Types.ObjectId,
+        ref: 'product',
+        required: true
+    },
+};
+
 const UserSchema = new Schema({
     name: {
         type: String,
@@ -36,7 +44,9 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true,
-    }
+    },
+    favoriteList: [favorite],
+
 }, {timestamps: true});
 
 module.exports = model('user', UserSchema);

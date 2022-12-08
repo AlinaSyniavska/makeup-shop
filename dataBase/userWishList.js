@@ -1,7 +1,7 @@
 const {Schema, model} = require('mongoose');
 
 
-const productLiked = {
+const favorite = {
     productId: {
         type: Schema.Types.ObjectId,
         ref: 'product',
@@ -15,7 +15,7 @@ const UserWishListSchema = new Schema({
         ref: 'user',
         required: true,
     },
-    products: [productLiked],
+    products: [favorite],
 
 
 }, {timestamps: true});
