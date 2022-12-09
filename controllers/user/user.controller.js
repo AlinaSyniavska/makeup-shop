@@ -42,7 +42,7 @@ module.exports = {
     getFavoriteListById: async (req, res, next) => {
         try {
             const {user} = req;
-            res.json({list: user.favoriteList});
+            res.json({favoriteList: user.favoriteList});
         } catch (e) {
             next(e);
         }
