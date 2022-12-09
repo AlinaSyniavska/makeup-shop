@@ -11,6 +11,11 @@ userRouter.post('/',
     userMiddleware.isUserUniq,
     userController.create);
 
+userRouter.get('/favoriteList/:id',
+    commonMiddleware.isIdValid,
+    userMiddleware.isUserPresent,
+    userController.getFavoriteListById);
+
 userRouter.get('/:id',
     commonMiddleware.isIdValid,
     userMiddleware.isUserPresent,

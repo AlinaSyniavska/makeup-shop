@@ -39,6 +39,15 @@ module.exports = {
         }
     },
 
+    getFavoriteListById: async (req, res, next) => {
+        try {
+            const {user} = req;
+            res.json({list: user.favoriteList});
+        } catch (e) {
+            next(e);
+        }
+    },
+
     update: async (req, res, next) => {
         try {
             const {id} = req.params;
