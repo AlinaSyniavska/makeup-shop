@@ -20,7 +20,7 @@ userRouter.get('/:id',
     commonMiddleware.isIdValid,
     userMiddleware.isUserPresent,
     userController.getById);
-userRouter.put('/:id',
+userRouter.patch('/:id',
     commonMiddleware.isIdValid,
     authMiddleware.checkAccessToken,
     commonMiddleware.isDataValid(userValidator.updateUserValidator),
