@@ -17,6 +17,11 @@ module.exports = {
         return User.findOneAndUpdate(params, userData, options);
     },
 
+    updateFavoriteList: async (params = {}, userData, options = {new: true}) => {
+        await User.updateOne(params, { $unset: { favoriteList: 1 } }, options);
+        return User.findOneAndUpdate(params, userData, options);
+    },
+
     deleteOne: (params = {}) => {
         return User.deleteOne(params);
     },

@@ -51,7 +51,14 @@ module.exports = {
     update: async (req, res, next) => {
         try {
             const {id} = req.params;
-            const updatedUser = await userService.updateOne({_id: id}, req.body);
+            let updatedUser;
+
+            if (req.body.favoriteList) {
+                updatedUser = await userService.updateFavoriteList({_id: id}, req.body);
+            } else {
+                updatedUser = await userService.updateOne({_id: id}, req.body);
+            }
+
             res.status(201).json(updatedUser);
         } catch (e) {
             next(e);
