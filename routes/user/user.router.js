@@ -16,10 +16,15 @@ userRouter.get('/favoriteList/:id',
     userMiddleware.isUserPresent,
     userController.getFavoriteListById);
 
+userRouter.get('/full/:id',
+    commonMiddleware.isIdValid,
+    userMiddleware.isFullUserPresent,
+    userController.getById('favorites'));
+
 userRouter.get('/:id',
     commonMiddleware.isIdValid,
     userMiddleware.isUserPresent,
-    userController.getById);
+    userController.getById());
 userRouter.patch('/:id',
     commonMiddleware.isIdValid,
     authMiddleware.checkAccessToken,

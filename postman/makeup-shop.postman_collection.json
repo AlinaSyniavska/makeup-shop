@@ -120,6 +120,54 @@
 					"response": []
 				},
 				{
+					"name": "user FULL by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}users/full/:id",
+							"host": [
+								"{{HOST}}users"
+							],
+							"path": [
+								"full",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{userId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user favoriteList by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}users/favoriteList/:id",
+							"host": [
+								"{{HOST}}users"
+							],
+							"path": [
+								"favoriteList",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{userId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "user by ID",
 					"request": {
 						"method": "DELETE",

@@ -30,10 +30,15 @@ module.exports = {
         }
     },
 
-    getById: async (req, res, next) => {
+    getById: (dataType = 'user') => async (req, res, next) => {
         try {
             const {user} = req;
-            res.json(user);
+
+            if (dataType === 'favorites') {
+                res.json(user.favoriteList);
+            } else {
+                res.json(user);
+            }
         } catch (e) {
             next(e);
         }

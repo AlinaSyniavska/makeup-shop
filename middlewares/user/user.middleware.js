@@ -8,7 +8,28 @@ module.exports = {
 
             const user = await userService.findOne({_id: id});
 
-            if(!user){
+            if (!user) {
+                return next(new CustomError(`User with id ${id} not found`, 404));
+            }
+
+            req.user = user;
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    isFullUserPresent: async (req, res, next) => {
+        try {
+            const {id} = req.params;
+
+            let user = {};
+            await userService.findOne({_id: id})
+                .populate("favoriteList")
+                .then(p => user = p)
+                .catch(error => console.log(error));
+
+            if (!user) {
                 return next(new CustomError(`User with id ${id} not found`, 404));
             }
 
@@ -25,7 +46,7 @@ module.exports = {
 
             const user = await userService.findOne({email});
 
-            if(user){
+            if (user) {
                 return next(new CustomError(`User with email ${email} is exist`, 409));
             }
 
