@@ -19,7 +19,7 @@ module.exports = {
         }
     },
 
-    isFullUserPresent: async (req, res, next) => {
+    isPopulatedUserPresent: async (req, res, next) => {
         try {
             const {id} = req.params;
 

@@ -18,7 +18,7 @@ userRouter.get('/favoriteList/:id',
 
 userRouter.get('/full/:id',
     commonMiddleware.isIdValid,
-    userMiddleware.isFullUserPresent,
+    userMiddleware.isPopulatedUserPresent,
     userController.getById('favorites'));
 
 userRouter.get('/:id',
