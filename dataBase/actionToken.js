@@ -1,6 +1,6 @@
-const {Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const {emailActionEnum} = require("../constants");
+const { emailActionEnum } = require("../constants");
 
 const ActionTokenSchema = new Schema({
     userId: {

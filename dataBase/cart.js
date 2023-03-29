@@ -1,6 +1,6 @@
-const {Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const {cartStatusEnum} = require("../constants");
+const { cartStatusEnum } = require("../constants");
 
 const productOrdered = {
     productId: {

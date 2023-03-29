@@ -1,6 +1,6 @@
-const {Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const {genderEnum} = require("../constants");
+const { genderEnum } = require("../constants");
 
 const UserSchema = new Schema({
     name: {
