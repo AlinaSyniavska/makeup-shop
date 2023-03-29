@@ -1,14 +1,12 @@
 require('dotenv').config();
-const {config} = require('./configs');
+const { config } = require('./configs');
 
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const swaggerUi = require('swagger-ui-express');
-const swaggerJson = require('./swagger.json');
 const cronRun = require('./cron');
 
-const {adminRouter, homeRouter, categoryRouter, authRouter, cartRouter, userRouter} = require("./routes");
+const { adminRouter, homeRouter, categoryRouter, authRouter, cartRouter, userRouter } = require("./routes");
 
 mongoose.connect(config.MONGO_URL);
 
@@ -31,8 +29,6 @@ app.use('/cart', cartRouter);
 app.use('/category', categoryRouter);
 app.use('/home', homeRouter);
 app.use('/users', userRouter);
-
-// app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerJson));
 
 app.use('*', (req, res) => {
     res.status(404).json('Route not found');
